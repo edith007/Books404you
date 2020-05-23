@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h5>
+    {% for attrib in user %}
+    {{ attrib }}
+    {% endfor %}
+</h5>
+{% endblock %}

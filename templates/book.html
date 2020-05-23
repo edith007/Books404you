@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1>Book Details</h1>
+{% for book in books %}
+<li>ISBN &nbsp;&nbsp;&nbsp;  :&nbsp;&nbsp;{{ book.isbn }}</li>
+<li>Title &nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;{{ book.title }}</li>
+<li>Author&nbsp; :&nbsp;&nbsp;{{ book.author }}</li>
+<li>Year   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;{{ book.year }}</li>
+{% endfor %}
+<br><br><br>
+<h3>Submit Your Review</h3><br>
+<form action="{{ url_for('review') }}" method="POST">
+    <div class="form-row align-items-center">
+      <div class="col-auto col-7">
+        <textarea class="md-textarea form-control" rows="3" name="review" placeholder="Comment"></textarea>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+      </div>
+    </div>
+  </form>
+<br>
+<h3>Reviews</h3><br>
+{% for review in reviews %}
+<h5>User : {{ review.name }}</h5>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ review.comment }}
+{% endfor %}
+{% endblock %}
